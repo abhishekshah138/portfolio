@@ -1,0 +1,156 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #000000;
+    --text-primary: #F0F0FF;
+  }
+  
+  html, body {
+    color: var(--text-primary);
+    background: 
+      radial-gradient(ellipse at 20% 50%, rgba(13, 27, 62, 0.2) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 20%, rgba(10, 32, 64, 0.15) 0%, transparent 55%),
+      radial-gradient(ellipse at 60% 80%, rgba(91, 143, 255, 0.01) 0%, transparent 50%),
+      #000000;
+    background-attachment: fixed;
+    overflow-x: clip;
+    max-width: 100vw;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  p, li, span {
+    line-height: 1.65;
+    letter-spacing: -0.005em;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+
+  section {
+    background: transparent !important;
+  }
+  
+  canvas {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  .sticky {
+    transform: translateZ(0);
+  }
+
+  .is-scrolling * {
+    transition-duration: 0ms !important;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply border border-white/5 rounded-2xl;
+    background: rgba(17, 17, 24, 0.95);
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-accent-primary to-accent-secondary;
+  }
+
+  .section-divider {
+    @apply w-full border-t border-white/[0.05];
+  }
+  
+  /* Mobile Fallbacks */
+  @supports not (backdrop-filter: blur(1px)) {
+    .glass-card {
+      background: #111118 !important;
+    }
+    .glass {
+      background: #111118 !important;
+    }
+  }
+}
+
+/* Lenis Specific Styles */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* Hack Mode Overrides */
+html.hack-mode {
+  --background: #000 !important;
+  --text-primary: #00FF00 !important;
+  background-color: #000 !important;
+}
+html.hack-mode * {
+  color: #00FF00 !important;
+  border-color: #00FF00 !important;
+  font-family: var(--font-jetbrains-mono), monospace !important;
+  text-shadow: 0 0 2px rgba(0,255,0,0.5) !important;
+  box-shadow: none !important;
+}
+html.hack-mode [class*="bg-"] {
+  background-color: transparent !important;
+  background-image: none !important;
+  backdrop-filter: none !important;
+
+  @media (max-width: 768px) {
+    * {
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+    }
+  }
+}
+html.hack-mode img, html.hack-mode svg, html.hack-mode canvas {
+  filter: sepia(1) hue-rotate(80deg) saturate(5) brightness(0.8) !important;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0) }
+  25% { transform: translateX(-4px) }
+  75% { transform: translateX(4px) }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1 }
+  50%       { opacity: 0 }
+}
+.cursor-blink {
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes marqueeAnim {
+  0%   { transform: translateX(0%) }
+  100% { transform: translateX(-50%) }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeAnim 28s linear infinite;
+}
+.marquee-track:hover {
+  animation-play-state: paused;
+}
+@keyframes marquee-vertical {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+.animate-marquee-vertical {
+  animation: marquee-vertical 60s linear infinite;
+}
