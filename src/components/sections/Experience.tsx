@@ -29,10 +29,10 @@ export default memo(function Experience() {
     <section id="experience" className="relative h-auto w-full overflow-hidden flex flex-col items-center py-32">
       <div className="mb-24 text-center z-10 px-4">
         <div className="flex justify-center mb-3">
-          <SectionLabel code="SEC-05" label="EXPERIENCE" />
+          <SectionLabel code="SEC-05" label="TRAINING" />
         </div>
         <h2 className="text-[32px] md:text-[clamp(40px,6vw,80px)] font-bold text-[#F0F0FF] mb-4 leading-none font-display">
-          Experience
+          Training
         </h2>
         <p className="text-[#6B7280] text-[15px] md:text-[clamp(18px,2.5vw,28px)] font-body">
           Real-world learning, real-world impact.

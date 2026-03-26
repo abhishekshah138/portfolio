@@ -6,7 +6,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Experience", href: "#experience" },
+  { label: "Training", href: "#experience" },
   { label: "Skills",     href: "#skills" },
   { label: "Projects",   href: "#projects" },
   { label: "Achievements", href: "#achievements" },
